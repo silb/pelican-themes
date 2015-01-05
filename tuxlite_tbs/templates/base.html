@@ -13,10 +13,9 @@
     <![endif]-->
 
     <!-- Le styles -->
-    <link href="{{ SITEURL }}/theme/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ SITEURL }}/theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="{{ SITEURL }}/theme/local.css" rel="stylesheet">
-    <link href="{{ SITEURL }}/theme/pygments.css" rel="stylesheet">
+    {% assets filters="cssmin", output="css-all.min.css", "bootstrap.min.css", "bootstrap.min.responsive.css", "local.css", "pygments.css" %}
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}">
+    {% endassets %}
 
     <!-- So Firefox can bookmark->"abo this site" -->
     {% if FEED_ALL_ATOM %}
@@ -166,7 +165,11 @@
 
 </div> <!-- /container -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="{{ SITEURL }}/theme/bootstrap-collapse.js"></script>
+
+{% assets filters="jsmin", output="js-all.min.js", "bootstrap-collapse.js" %}
+<script src="{{ SITEURL }}/{{ ASSET_URL }}"></script>
+{% endassets %}
+
 {% include "analytics.html" %}
 {% include "github.html" %} 
 </body>
